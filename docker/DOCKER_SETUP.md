@@ -71,3 +71,54 @@ docker-compose exec app php /var/www/db_test.php
 ## Potential Issues and Solutions
 - If environment variables are not being passed correctly, ensure the .env file is in the same directory as docker-compose.yml.
 - For connection issues, check that the service names in docker-compose.yml match the hostnames used in the application configuration.
+
+
+## Setting Up and Running the Docker Environment
+
+Follow these steps to set up and run the Docker environment for this project:
+
+1. **Prerequisites**
+   - Ensure Docker and Docker Compose are installed on your system.
+   - Clone this repository to your local machine.
+
+2. **Environment Configuration**
+   - Copy the `.env.example` file to `.env`:
+     ```
+     cp .env.example .env
+     ```
+   - Open the `.env` file and set the database credentials and other environment-specific variables.
+
+3. **Building and Starting the Containers**
+   - Open a terminal in the project root directory.
+   - Run the following command to build and start the containers:
+     ```
+     docker-compose up -d --build
+     ```
+   - This command builds the images (if not built already) and starts the containers in detached mode.
+
+4. **Accessing the Application**
+   - The application should now be accessible at `http://localhost:8080`
+
+5. **Stopping the Containers**
+   - To stop the containers, run:
+     ```
+     docker-compose down
+     ```
+
+6. **Viewing Logs**
+   - To view logs from all containers:
+     ```
+     docker-compose logs
+     ```
+   - To view logs from a specific service (e.g., app):
+     ```
+     docker-compose logs app
+     ```
+
+7. **Running Tests**
+   - To run tests within the Docker environment:
+     ```
+     docker-compose exec app php artisan test
+     ```
+
+Remember to run the database connectivity test as mentioned in the "Testing the Setup" section to ensure everything is configured correctly.
