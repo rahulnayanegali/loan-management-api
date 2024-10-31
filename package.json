@@ -1,0 +1,18 @@
+{
+  "name": "loan-management-api",
+  "version": "1.0.0",
+  "description": "Loan Management API: A RESTful backend service for creating, reading, updating, and deleting loans. Built with PHP, Laravel, and Docker for easy setup and deployment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "husky": "^8.0.0"
+  }
+}

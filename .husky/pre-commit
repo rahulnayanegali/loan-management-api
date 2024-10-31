@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Placeholder for future PHP linting
+echo "PHP linting will be implemented with Docker in a future commit"
