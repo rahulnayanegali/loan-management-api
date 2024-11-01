@@ -90,6 +90,14 @@ Follow these steps to set up and run the Docker environment for this project:
 
 3. **Building and Starting the Containers**
    - Open a terminal in the project root directory.
+   -  Run the following command to build containers:
+     ```
+     docker-compose build
+     ```
+     Run the following command to Laravel:
+     ```
+     docker-compose run --rm app composer create-project laravel/laravel .
+     ```
    - Run the following command to build and start the containers:
      ```
      docker-compose up -d --build
