@@ -194,10 +194,13 @@ class LoanController extends Controller
     {
         $validated = request()->validate([
             'per_page' => 'sometimes|integer|min:1|max:100',
+            'page' => 'sometimes|integer|min:1',
         ]);
 
         $perPage = $validated['per_page'] ?? 15; // Default to 15 if not specified or invalid
-        $loans = Loan::paginate($perPage);
+        $page = request()->input('page', 1); // Explicitly get the page from the request
+
+        $loans = Loan::paginate($perPage, ['*'], 'page', $page);
         return LoanResource::collection($loans)->response();
 
     }
