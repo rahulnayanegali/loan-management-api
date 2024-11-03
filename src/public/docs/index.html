@@ -1,151 +1,300 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Laravel Documentation</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+        <title>Loan Management API Documentation</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+            rel="stylesheet"
+        />
 
-    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
-    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+        <link
+            rel="stylesheet"
+            href="../docs/css/theme-default.style.css"
+            media="screen"
+        />
+        <link
+            rel="stylesheet"
+            href="../docs/css/theme-default.print.css"
+            media="print"
+        />
 
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 
-    <link rel="stylesheet"
-          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
-    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css"
+        />
+        <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
 
-    <style id="language-style">
-        /* starts out as display none and is replaced with js later  */
-                    body .content .bash-example code { display: none; }
-                    body .content .javascript-example code { display: none; }
-            </style>
+        <style id="language-style">
+            /* starts out as display none and is replaced with js later  */
+            body .content .bash-example code {
+                display: none;
+            }
+            body .content .javascript-example code {
+                display: none;
+            }
+        </style>
 
-    <script>
-        var tryItOutBaseUrl = "http://localhost:8080";
-        var useCsrf = Boolean();
-        var csrfUrl = "/sanctum/csrf-cookie";
-    </script>
-    <script src="../docs/js/tryitout-4.38.0.js"></script>
+        <script>
+            var tryItOutBaseUrl = "http://localhost:8080";
+            var useCsrf = Boolean();
+            var csrfUrl = "/sanctum/csrf-cookie";
+        </script>
+        <script src="../docs/js/tryitout-4.38.0.js"></script>
 
-    <script src="../docs/js/theme-default-4.38.0.js"></script>
+        <script src="../docs/js/theme-default-4.38.0.js"></script>
+    </head>
 
-</head>
-
-<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
-
-<a href="#" id="nav-button">
-    <span>
-        MENU
-        <img src="../docs/images/navbar.png" alt="navbar-image"/>
-    </span>
-</a>
-<div class="tocify-wrapper">
-    
+    <body data-languages='["bash","javascript"]'>
+        <a href="#" id="nav-button">
+            <span>
+                MENU
+                <img src="../docs/images/navbar.png" alt="navbar-image" />
+            </span>
+        </a>
+        <div class="tocify-wrapper">
             <div class="lang-selector">
-                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
-                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
-                    </div>
-    
-    <div class="search">
-        <input type="text" class="search" id="input-search" placeholder="Search">
-    </div>
-
-    <div id="toc">
-                    <ul id="tocify-header-introduction" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="introduction">
-                    <a href="#introduction">Introduction</a>
-                </li>
-                            </ul>
-                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="authenticating-requests">
-                    <a href="#authenticating-requests">Authenticating requests</a>
-                </li>
-                            </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
-                </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-test">
-                                <a href="#endpoints-GETapi-test">GET api/test</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
-                    <ul id="tocify-header-loan-management" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="loan-management">
-                    <a href="#loan-management">Loan Management</a>
-                </li>
-                                    <ul id="tocify-subheader-loan-management" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="loan-management-POSTapi-loans">
-                                <a href="#loan-management-POSTapi-loans">Create a new loan.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="loan-management-PUTapi-loans--id-">
-                                <a href="#loan-management-PUTapi-loans--id-">Update an existing loan.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="loan-management-DELETEapi-loans--id-">
-                                <a href="#loan-management-DELETEapi-loans--id-">Delete an existing loan.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="loan-management-GETapi-loans">
-                                <a href="#loan-management-GETapi-loans">Retrieve a list of all loans.</a>
-                            </li>
-                                                                        </ul>
-                            </ul>
+                <button
+                    type="button"
+                    class="lang-button"
+                    data-language-name="bash"
+                >
+                    bash
+                </button>
+                <button
+                    type="button"
+                    class="lang-button"
+                    data-language-name="javascript"
+                >
+                    javascript
+                </button>
             </div>
 
-    <ul class="toc-footer" id="toc-footer">
-                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
-                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
-                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
-    </ul>
+            <div class="search">
+                <input
+                    type="text"
+                    class="search"
+                    id="input-search"
+                    placeholder="Search"
+                />
+            </div>
 
-    <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 3, 2024</li>
-    </ul>
-</div>
+            <div id="toc">
+                <ul id="tocify-header-introduction" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="introduction">
+                        <a href="#introduction">Introduction</a>
+                    </li>
+                </ul>
+                <ul
+                    id="tocify-header-authenticating-requests"
+                    class="tocify-header"
+                >
+                    <!-- <li
+                        class="tocify-item level-1"
+                        data-unique="authenticating-requests"
+                    >
+                        <a href="#authenticating-requests"
+                            >Authenticating requests</a
+                        >
+                    </li> -->
+                </ul>
+                <ul id="tocify-header-endpoints" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="endpoints">
+                        <a href="#endpoints">Endpoints</a>
+                    </li>
+                    <ul
+                        id="tocify-subheader-endpoints"
+                        class="tocify-subheader"
+                    >
+                        <li
+                            class="tocify-item level-2"
+                            data-unique="endpoints-GETapi-test"
+                        >
+                            <a href="#endpoints-GETapi-test">GET api/test</a>
+                        </li>
+                    </ul>
+                </ul>
+                <ul id="tocify-header-loan-management" class="tocify-header">
+                    <li
+                        class="tocify-item level-1"
+                        data-unique="loan-management"
+                    >
+                        <a href="#loan-management">Loan Management</a>
+                    </li>
+                    <ul
+                        id="tocify-subheader-loan-management"
+                        class="tocify-subheader"
+                    >
+                        <li
+                            class="tocify-item level-2"
+                            data-unique="loan-management-POSTapi-loans"
+                        >
+                            <a href="#loan-management-POSTapi-loans"
+                                >Create a new loan.</a
+                            >
+                        </li>
+                        <li
+                            class="tocify-item level-2"
+                            data-unique="loan-management-PUTapi-loans--id-"
+                        >
+                            <a href="#loan-management-PUTapi-loans--id-"
+                                >Update an existing loan.</a
+                            >
+                        </li>
+                        <li
+                            class="tocify-item level-2"
+                            data-unique="loan-management-DELETEapi-loans--id-"
+                        >
+                            <a href="#loan-management-DELETEapi-loans--id-"
+                                >Delete an existing loan.</a
+                            >
+                        </li>
+                        <li
+                            class="tocify-item level-2"
+                            data-unique="loan-management-GETapi-loans"
+                        >
+                            <a href="#loan-management-GETapi-loans"
+                                >Retrieve a list of all loans.</a
+                            >
+                        </li>
+                    </ul>
+                </ul>
+            </div>
 
-<div class="page-wrapper">
-    <div class="dark-box"></div>
-    <div class="content">
-        <h1 id="introduction">Introduction</h1>
-<aside>
-    <strong>Base URL</strong>: <code>http://localhost:8080</code>
-</aside>
-<p>This documentation aims to provide all the information you need to work with our API.</p>
-<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+            <ul class="toc-footer" id="toc-footer">
+                <li style="padding-bottom: 5px">
+                    <a href="../docs/collection.json"
+                        >View Postman collection</a
+                    >
+                </li>
+                <li style="padding-bottom: 5px">
+                    <a href="../docs/openapi.yaml">View OpenAPI spec</a>
+                </li>
+                <li>
+                    <a href="http://github.com/knuckleswtf/scribe"
+                        >Documentation powered by Scribe ✍</a
+                    >
+                </li>
+            </ul>
 
-        <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>This API is not authenticated.</p>
+            <ul class="toc-footer" id="last-updated">
+                <li>Last updated: November 3, 2024</li>
+            </ul>
+        </div>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <div class="page-wrapper">
+            <div class="dark-box"></div>
+            <div class="content">
+                <h1 id="introduction">Introduction</h1>
+                <aside>
+                    <strong>Base URL</strong>:
+                    <code>http://localhost:8080</code>
+                </aside>
+                <p>
+                    This API provides a comprehensive solution for managing
+                    loans in a lending system. Built with Laravel and following
+                    REST principles, it offers robust validation, error
+                    handling, and pagination features.
+                </p>
 
-    
+                <div class="key-features">
+                    <h2>Key Features</h2>
+                    <ul>
+                        <li>
+                            <strong>RESTful Architecture:</strong> Standard HTTP
+                            methods for CRUD operations
+                        </li>
+                        <li>
+                            <strong>Comprehensive Validation:</strong> Built-in
+                            validation for all loan parameters
+                        </li>
+                        <li>
+                            <strong>Pagination Support:</strong> Efficient
+                            handling of large datasets
+                        </li>
+                        <li>
+                            <strong>Error Handling:</strong> Detailed error
+                            messages and appropriate HTTP status codes
+                        </li>
+                    </ul>
+                </div>
 
-                                <h2 id="endpoints-GETapi-test">GET api/test</h2>
+                <div class="technical-details">
+                    <h2>Technical Specifications</h2>
+                    <table>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Specification</th>
+                        </tr>
+                        <tr>
+                            <td>API Version</td>
+                            <td>1.0</td>
+                        </tr>
+                        <tr>
+                            <td>Response Format</td>
+                            <td>JSON</td>
+                        </tr>
+                        <tr>
+                            <td>Authentication</td>
+                            <td>Not required (Development)</td>
+                        </tr>
+                        <tr>
+                            <td>Rate Limiting</td>
+                            <td>None (Development)</td>
+                        </tr>
+                    </table>
+                </div>
 
-<p>
-</p>
+                <div class="data-constraints">
+                    <h2>Data Constraints</h2>
+                    <table>
+                        <tr>
+                            <th>Field</th>
+                            <th>Constraints</th>
+                        </tr>
+                        <tr>
+                            <td>amount</td>
+                            <td>Numeric, minimum: 0</td>
+                        </tr>
+                        <tr>
+                            <td>interest_rate</td>
+                            <td>Numeric, range: 0-100</td>
+                        </tr>
+                        <tr>
+                            <td>duration_months</td>
+                            <td>Integer, range: 1-360</td>
+                        </tr>
+                    </table>
+                </div>
 
+                <h1 id="endpoints">Endpoints</h1>
 
+                <h2 id="endpoints-GETapi-test">GET api/test</h2>
 
-<span id="example-requests-GETapi-test">
-<blockquote>Example request:</blockquote>
+                <p>This is test endpoint.</p>
 
+                <span id="example-requests-GETapi-test">
+                    <blockquote>Example request:</blockquote>
 
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+                    <div class="bash-example">
+                        <pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8080/api/test" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
+                    </div>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+                    <div class="javascript-example">
+                        <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8080/api/test"
 );
 
@@ -157,116 +306,154 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
+}).then(response =&gt; response.json());</code></pre>
+                    </div>
+                </span>
 
-</span>
-
-<span id="example-responses-GETapi-test">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
+                <span id="example-responses-GETapi-test">
+                    <blockquote>
+                        <p>Example response (200):</p>
+                    </blockquote>
+                    <details class="annotation">
+                        <summary style="cursor: pointer">
+                            <small
+                                onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'"
+                                >Show headers</small
+                            >
+                        </summary>
+                        <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 access-control-allow-origin: *
- </code></pre></details>         <pre>
+ </code></pre>
+                    </details>
+                    <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;API is working&quot;
 }</code>
  </pre>
-    </span>
-<span id="execution-results-GETapi-test" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-test"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-test"
+                </span>
+                <span id="execution-results-GETapi-test" hidden>
+                    <blockquote>
+                        Received response<span
+                            id="execution-response-status-GETapi-test"
+                        ></span
+                        >:
+                    </blockquote>
+                    <pre
+                        class="json"
+                    ><code id="execution-response-content-GETapi-test"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-test" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-test">
+                </span>
+                <span id="execution-error-GETapi-test" hidden>
+                    <blockquote>Request failed with error:</blockquote>
+                    <pre><code id="execution-error-message-GETapi-test">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-test" data-method="GET"
-      data-path="api/test"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-test', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-test"
-                    onclick="tryItOut('GETapi-test');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-test"
-                    onclick="cancelTryOut('GETapi-test');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-test"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/test</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-test"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-test"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
+                </span>
+                <form
+                    id="form-GETapi-test"
+                    data-method="GET"
+                    data-path="api/test"
+                    data-authed="0"
+                    data-hasfiles="0"
+                    data-isarraybody="0"
+                    autocomplete="off"
+                    onsubmit="event.preventDefault(); executeTryOut('GETapi-test', this);"
+                >
+                    <h3>
+                        Request&nbsp;&nbsp;&nbsp;
+                        <button
+                            type="button"
+                            style="
+                                background-color: #8fbcd4;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-tryout-GETapi-test"
+                            onclick="tryItOut('GETapi-test');"
+                        >
+                            Try it out ⚡
+                        </button>
+                        <button
+                            type="button"
+                            style="
+                                background-color: #c97a7e;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-canceltryout-GETapi-test"
+                            onclick="cancelTryOut('GETapi-test');"
+                            hidden
+                        >
+                            Cancel 🛑</button
+                        >&nbsp;&nbsp;
+                        <button
+                            type="submit"
+                            style="
+                                background-color: #6ac174;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-executetryout-GETapi-test"
+                            data-initial-text="Send Request 💥"
+                            data-loading-text="⏱ Sending..."
+                            hidden
+                        >
+                            Send Request 💥
+                        </button>
+                    </h3>
+                    <p>
+                        <small class="badge badge-green">GET</small>
+                        <b><code>api/test</code></b>
+                    </p>
+                    <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Content-Type</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Content-Type"
+                            data-endpoint="GETapi-test"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Accept</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Accept"
+                            data-endpoint="GETapi-test"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                </form>
 
                 <h1 id="loan-management">Loan Management</h1>
 
-    
+                <h2 id="loan-management-POSTapi-loans">Create a new loan.</h2>
 
-                                <h2 id="loan-management-POSTapi-loans">Create a new loan.</h2>
+                <p></p>
 
-<p>
-</p>
+                <span id="example-requests-POSTapi-loans">
+                    <blockquote>Example request:</blockquote>
 
-
-
-<span id="example-requests-POSTapi-loans">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
+                    <div class="bash-example">
+                        <pre><code class="language-bash">curl --request POST \
     "http://localhost:8080/api/loans" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -275,11 +462,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"interest_rate\": \"5.5\",
     \"duration_months\": 12
 }"
-</code></pre></div>
+</code></pre>
+                    </div>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+                    <div class="javascript-example">
+                        <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8080/api/loans"
 );
 
@@ -298,15 +485,15 @@ fetch(url, {
     method: "POST",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
+}).then(response =&gt; response.json());</code></pre>
+                    </div>
+                </span>
 
-</span>
-
-<span id="example-responses-POSTapi-loans">
-            <blockquote>
-            <p>Example response (201):</p>
-        </blockquote>
-                <pre>
+                <span id="example-responses-POSTapi-loans">
+                    <blockquote>
+                        <p>Example response (201):</p>
+                    </blockquote>
+                    <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;Loan created successfully&quot;,
@@ -320,10 +507,10 @@ fetch(url, {
     }
 }</code>
  </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
+                    <blockquote>
+                        <p>Example response (422):</p>
+                    </blockquote>
+                    <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;The given data was invalid.&quot;,
@@ -340,125 +527,179 @@ fetch(url, {
     }
 }</code>
  </pre>
-    </span>
-<span id="execution-results-POSTapi-loans" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-loans"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-loans"
+                </span>
+                <span id="execution-results-POSTapi-loans" hidden>
+                    <blockquote>
+                        Received response<span
+                            id="execution-response-status-POSTapi-loans"
+                        ></span
+                        >:
+                    </blockquote>
+                    <pre
+                        class="json"
+                    ><code id="execution-response-content-POSTapi-loans"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-loans" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-loans">
+                </span>
+                <span id="execution-error-POSTapi-loans" hidden>
+                    <blockquote>Request failed with error:</blockquote>
+                    <pre><code id="execution-error-message-POSTapi-loans">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-loans" data-method="POST"
-      data-path="api/loans"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-loans', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-loans"
-                    onclick="tryItOut('POSTapi-loans');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-loans"
-                    onclick="cancelTryOut('POSTapi-loans');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-loans"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/loans</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-loans"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-loans"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
-<small>numeric</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="amount"                data-endpoint="POSTapi-loans"
-               value="5000"
-               data-component="body">
-    <br>
-<p>The loan amount. Example: <code>5000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>interest_rate</code></b>&nbsp;&nbsp;
-<small>numeric</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="interest_rate"                data-endpoint="POSTapi-loans"
-               value="5.5"
-               data-component="body">
-    <br>
-<p>The interest rate (percentage). Example: <code>5.5</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>duration_months</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="duration_months"                data-endpoint="POSTapi-loans"
-               value="12"
-               data-component="body">
-    <br>
-<p>The loan duration in months. Example: <code>12</code></p>
-        </div>
-        </form>
+                </span>
+                <form
+                    id="form-POSTapi-loans"
+                    data-method="POST"
+                    data-path="api/loans"
+                    data-authed="0"
+                    data-hasfiles="0"
+                    data-isarraybody="0"
+                    autocomplete="off"
+                    onsubmit="event.preventDefault(); executeTryOut('POSTapi-loans', this);"
+                >
+                    <h3>
+                        Request&nbsp;&nbsp;&nbsp;
+                        <button
+                            type="button"
+                            style="
+                                background-color: #8fbcd4;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-tryout-POSTapi-loans"
+                            onclick="tryItOut('POSTapi-loans');"
+                        >
+                            Try it out ⚡
+                        </button>
+                        <button
+                            type="button"
+                            style="
+                                background-color: #c97a7e;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-canceltryout-POSTapi-loans"
+                            onclick="cancelTryOut('POSTapi-loans');"
+                            hidden
+                        >
+                            Cancel 🛑</button
+                        >&nbsp;&nbsp;
+                        <button
+                            type="submit"
+                            style="
+                                background-color: #6ac174;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-executetryout-POSTapi-loans"
+                            data-initial-text="Send Request 💥"
+                            data-loading-text="⏱ Sending..."
+                            hidden
+                        >
+                            Send Request 💥
+                        </button>
+                    </h3>
+                    <p>
+                        <small class="badge badge-black">POST</small>
+                        <b><code>api/loans</code></b>
+                    </p>
+                    <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Content-Type</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Content-Type"
+                            data-endpoint="POSTapi-loans"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Accept</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Accept"
+                            data-endpoint="POSTapi-loans"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                    <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>amount</code></b
+                        >&nbsp;&nbsp; <small>numeric</small>&nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="amount"
+                            data-endpoint="POSTapi-loans"
+                            value="5000"
+                            data-component="body"
+                        />
+                        <br />
+                        <p>The loan amount. Example: <code>5000</code></p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>interest_rate</code></b
+                        >&nbsp;&nbsp; <small>numeric</small>&nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="interest_rate"
+                            data-endpoint="POSTapi-loans"
+                            value="5.5"
+                            data-component="body"
+                        />
+                        <br />
+                        <p>
+                            The interest rate (percentage). Example:
+                            <code>5.5</code>
+                        </p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"
+                            ><code>duration_months</code></b
+                        >&nbsp;&nbsp; <small>integer</small>&nbsp; &nbsp;
+                        <input
+                            type="number"
+                            style="display: none"
+                            step="any"
+                            name="duration_months"
+                            data-endpoint="POSTapi-loans"
+                            value="12"
+                            data-component="body"
+                        />
+                        <br />
+                        <p>
+                            The loan duration in months. Example:
+                            <code>12</code>
+                        </p>
+                    </div>
+                </form>
 
-                    <h2 id="loan-management-PUTapi-loans--id-">Update an existing loan.</h2>
+                <h2 id="loan-management-PUTapi-loans--id-">
+                    Update an existing loan.
+                </h2>
 
-<p>
-</p>
+                <p></p>
 
+                <span id="example-requests-PUTapi-loans--id-">
+                    <blockquote>Example request:</blockquote>
 
-
-<span id="example-requests-PUTapi-loans--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
+                    <div class="bash-example">
+                        <pre><code class="language-bash">curl --request PUT \
     "http://localhost:8080/api/loans/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -467,11 +708,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"interest_rate\": \"6.5\",
     \"duration_months\": 24
 }"
-</code></pre></div>
+</code></pre>
+                    </div>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+                    <div class="javascript-example">
+                        <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8080/api/loans/1"
 );
 
@@ -490,15 +731,15 @@ fetch(url, {
     method: "PUT",
     headers,
     body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
+}).then(response =&gt; response.json());</code></pre>
+                    </div>
+                </span>
 
-</span>
-
-<span id="example-responses-PUTapi-loans--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
+                <span id="example-responses-PUTapi-loans--id-">
+                    <blockquote>
+                        <p>Example response (200):</p>
+                    </blockquote>
+                    <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;Loan updated successfully&quot;,
@@ -512,19 +753,19 @@ fetch(url, {
     }
 }</code>
  </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
+                    <blockquote>
+                        <p>Example response (404):</p>
+                    </blockquote>
+                    <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;Loan not found&quot;
 }</code>
  </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
+                    <blockquote>
+                        <p>Example response (422):</p>
+                    </blockquote>
+                    <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;The given data was invalid.&quot;,
@@ -541,144 +782,205 @@ fetch(url, {
     }
 }</code>
  </pre>
-    </span>
-<span id="execution-results-PUTapi-loans--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTapi-loans--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-loans--id-"
+                </span>
+                <span id="execution-results-PUTapi-loans--id-" hidden>
+                    <blockquote>
+                        Received response<span
+                            id="execution-response-status-PUTapi-loans--id-"
+                        ></span
+                        >:
+                    </blockquote>
+                    <pre
+                        class="json"
+                    ><code id="execution-response-content-PUTapi-loans--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-PUTapi-loans--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-loans--id-">
+                </span>
+                <span id="execution-error-PUTapi-loans--id-" hidden>
+                    <blockquote>Request failed with error:</blockquote>
+                    <pre><code id="execution-error-message-PUTapi-loans--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-PUTapi-loans--id-" data-method="PUT"
-      data-path="api/loans/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-loans--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-loans--id-"
-                    onclick="tryItOut('PUTapi-loans--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-loans--id-"
-                    onclick="cancelTryOut('PUTapi-loans--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-loans--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/loans/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-loans--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-loans--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="PUTapi-loans--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the loan. Example: <code>1</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
-<small>numeric</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="amount"                data-endpoint="PUTapi-loans--id-"
-               value="6000"
-               data-component="body">
-    <br>
-<p>The loan amount. Example: <code>6000</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>interest_rate</code></b>&nbsp;&nbsp;
-<small>numeric</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="interest_rate"                data-endpoint="PUTapi-loans--id-"
-               value="6.5"
-               data-component="body">
-    <br>
-<p>The interest rate (percentage). Example: <code>6.5</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>duration_months</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="duration_months"                data-endpoint="PUTapi-loans--id-"
-               value="24"
-               data-component="body">
-    <br>
-<p>The loan duration in months. Example: <code>24</code></p>
-        </div>
-        </form>
+                </span>
+                <form
+                    id="form-PUTapi-loans--id-"
+                    data-method="PUT"
+                    data-path="api/loans/{id}"
+                    data-authed="0"
+                    data-hasfiles="0"
+                    data-isarraybody="0"
+                    autocomplete="off"
+                    onsubmit="event.preventDefault(); executeTryOut('PUTapi-loans--id-', this);"
+                >
+                    <h3>
+                        Request&nbsp;&nbsp;&nbsp;
+                        <button
+                            type="button"
+                            style="
+                                background-color: #8fbcd4;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-tryout-PUTapi-loans--id-"
+                            onclick="tryItOut('PUTapi-loans--id-');"
+                        >
+                            Try it out ⚡
+                        </button>
+                        <button
+                            type="button"
+                            style="
+                                background-color: #c97a7e;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-canceltryout-PUTapi-loans--id-"
+                            onclick="cancelTryOut('PUTapi-loans--id-');"
+                            hidden
+                        >
+                            Cancel 🛑</button
+                        >&nbsp;&nbsp;
+                        <button
+                            type="submit"
+                            style="
+                                background-color: #6ac174;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-executetryout-PUTapi-loans--id-"
+                            data-initial-text="Send Request 💥"
+                            data-loading-text="⏱ Sending..."
+                            hidden
+                        >
+                            Send Request 💥
+                        </button>
+                    </h3>
+                    <p>
+                        <small class="badge badge-darkblue">PUT</small>
+                        <b><code>api/loans/{id}</code></b>
+                    </p>
+                    <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Content-Type</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Content-Type"
+                            data-endpoint="PUTapi-loans--id-"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Accept</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Accept"
+                            data-endpoint="PUTapi-loans--id-"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>id</code></b
+                        >&nbsp;&nbsp; <small>integer</small>&nbsp; &nbsp;
+                        <input
+                            type="number"
+                            style="display: none"
+                            step="any"
+                            name="id"
+                            data-endpoint="PUTapi-loans--id-"
+                            value="1"
+                            data-component="url"
+                        />
+                        <br />
+                        <p>The ID of the loan. Example: <code>1</code></p>
+                    </div>
+                    <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>amount</code></b
+                        >&nbsp;&nbsp; <small>numeric</small>&nbsp;
+                        <i>optional</i> &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="amount"
+                            data-endpoint="PUTapi-loans--id-"
+                            value="6000"
+                            data-component="body"
+                        />
+                        <br />
+                        <p>The loan amount. Example: <code>6000</code></p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>interest_rate</code></b
+                        >&nbsp;&nbsp; <small>numeric</small>&nbsp;
+                        <i>optional</i> &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="interest_rate"
+                            data-endpoint="PUTapi-loans--id-"
+                            value="6.5"
+                            data-component="body"
+                        />
+                        <br />
+                        <p>
+                            The interest rate (percentage). Example:
+                            <code>6.5</code>
+                        </p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"
+                            ><code>duration_months</code></b
+                        >&nbsp;&nbsp; <small>integer</small>&nbsp;
+                        <i>optional</i> &nbsp;
+                        <input
+                            type="number"
+                            style="display: none"
+                            step="any"
+                            name="duration_months"
+                            data-endpoint="PUTapi-loans--id-"
+                            value="24"
+                            data-component="body"
+                        />
+                        <br />
+                        <p>
+                            The loan duration in months. Example:
+                            <code>24</code>
+                        </p>
+                    </div>
+                </form>
 
-                    <h2 id="loan-management-DELETEapi-loans--id-">Delete an existing loan.</h2>
+                <h2 id="loan-management-DELETEapi-loans--id-">
+                    Delete an existing loan.
+                </h2>
 
-<p>
-</p>
+                <p></p>
 
+                <span id="example-requests-DELETEapi-loans--id-">
+                    <blockquote>Example request:</blockquote>
 
-
-<span id="example-requests-DELETEapi-loans--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
+                    <div class="bash-example">
+                        <pre><code class="language-bash">curl --request DELETE \
     "http://localhost:8080/api/loans/1" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
+                    </div>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+                    <div class="javascript-example">
+                        <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8080/api/loans/1"
 );
 
@@ -690,133 +992,177 @@ const headers = {
 fetch(url, {
     method: "DELETE",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
+}).then(response =&gt; response.json());</code></pre>
+                    </div>
+                </span>
 
-</span>
-
-<span id="example-responses-DELETEapi-loans--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
+                <span id="example-responses-DELETEapi-loans--id-">
+                    <blockquote>
+                        <p>Example response (200):</p>
+                    </blockquote>
+                    <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;Loan deleted successfully&quot;
 }</code>
  </pre>
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <pre>
+                    <blockquote>
+                        <p>Example response (404):</p>
+                    </blockquote>
+                    <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;message&quot;: &quot;Loan not found&quot;
 }</code>
  </pre>
-    </span>
-<span id="execution-results-DELETEapi-loans--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-loans--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-loans--id-"
+                </span>
+                <span id="execution-results-DELETEapi-loans--id-" hidden>
+                    <blockquote>
+                        Received response<span
+                            id="execution-response-status-DELETEapi-loans--id-"
+                        ></span
+                        >:
+                    </blockquote>
+                    <pre
+                        class="json"
+                    ><code id="execution-response-content-DELETEapi-loans--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-DELETEapi-loans--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-loans--id-">
+                </span>
+                <span id="execution-error-DELETEapi-loans--id-" hidden>
+                    <blockquote>Request failed with error:</blockquote>
+                    <pre><code id="execution-error-message-DELETEapi-loans--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-DELETEapi-loans--id-" data-method="DELETE"
-      data-path="api/loans/{id}"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-loans--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-loans--id-"
-                    onclick="tryItOut('DELETEapi-loans--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-loans--id-"
-                    onclick="cancelTryOut('DELETEapi-loans--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-loans--id-"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/loans/{id}</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-loans--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-loans--id-"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="DELETEapi-loans--id-"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the loan to delete. Example: <code>1</code></p>
-            </div>
-                    </form>
+                </span>
+                <form
+                    id="form-DELETEapi-loans--id-"
+                    data-method="DELETE"
+                    data-path="api/loans/{id}"
+                    data-authed="0"
+                    data-hasfiles="0"
+                    data-isarraybody="0"
+                    autocomplete="off"
+                    onsubmit="event.preventDefault(); executeTryOut('DELETEapi-loans--id-', this);"
+                >
+                    <h3>
+                        Request&nbsp;&nbsp;&nbsp;
+                        <button
+                            type="button"
+                            style="
+                                background-color: #8fbcd4;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-tryout-DELETEapi-loans--id-"
+                            onclick="tryItOut('DELETEapi-loans--id-');"
+                        >
+                            Try it out ⚡
+                        </button>
+                        <button
+                            type="button"
+                            style="
+                                background-color: #c97a7e;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-canceltryout-DELETEapi-loans--id-"
+                            onclick="cancelTryOut('DELETEapi-loans--id-');"
+                            hidden
+                        >
+                            Cancel 🛑</button
+                        >&nbsp;&nbsp;
+                        <button
+                            type="submit"
+                            style="
+                                background-color: #6ac174;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-executetryout-DELETEapi-loans--id-"
+                            data-initial-text="Send Request 💥"
+                            data-loading-text="⏱ Sending..."
+                            hidden
+                        >
+                            Send Request 💥
+                        </button>
+                    </h3>
+                    <p>
+                        <small class="badge badge-red">DELETE</small>
+                        <b><code>api/loans/{id}</code></b>
+                    </p>
+                    <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Content-Type</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Content-Type"
+                            data-endpoint="DELETEapi-loans--id-"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Accept</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Accept"
+                            data-endpoint="DELETEapi-loans--id-"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>id</code></b
+                        >&nbsp;&nbsp; <small>integer</small>&nbsp; &nbsp;
+                        <input
+                            type="number"
+                            style="display: none"
+                            step="any"
+                            name="id"
+                            data-endpoint="DELETEapi-loans--id-"
+                            value="1"
+                            data-component="url"
+                        />
+                        <br />
+                        <p>
+                            The ID of the loan to delete. Example:
+                            <code>1</code>
+                        </p>
+                    </div>
+                </form>
 
-                    <h2 id="loan-management-GETapi-loans">Retrieve a list of all loans.</h2>
+                <h2 id="loan-management-GETapi-loans">
+                    Retrieve a list of all loans.
+                </h2>
 
-<p>
-</p>
+                <p></p>
 
+                <span id="example-requests-GETapi-loans">
+                    <blockquote>Example request:</blockquote>
 
-
-<span id="example-requests-GETapi-loans">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
+                    <div class="bash-example">
+                        <pre><code class="language-bash">curl --request GET \
     --get "http://localhost:8080/api/loans?page=1&amp;per_page=10" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json"</code></pre>
+                    </div>
 
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
+                    <div class="javascript-example">
+                        <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8080/api/loans"
 );
 
@@ -835,15 +1181,15 @@ const headers = {
 fetch(url, {
     method: "GET",
     headers,
-}).then(response =&gt; response.json());</code></pre></div>
+}).then(response =&gt; response.json());</code></pre>
+                    </div>
+                </span>
 
-</span>
-
-<span id="example-responses-GETapi-loans">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
+                <span id="example-responses-GETapi-loans">
+                    <blockquote>
+                        <p>Example response (200):</p>
+                    </blockquote>
+                    <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
@@ -881,111 +1227,156 @@ fetch(url, {
     }
 }</code>
  </pre>
-    </span>
-<span id="execution-results-GETapi-loans" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-loans"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-loans"
+                </span>
+                <span id="execution-results-GETapi-loans" hidden>
+                    <blockquote>
+                        Received response<span
+                            id="execution-response-status-GETapi-loans"
+                        ></span
+                        >:
+                    </blockquote>
+                    <pre
+                        class="json"
+                    ><code id="execution-response-content-GETapi-loans"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-loans" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-loans">
+                </span>
+                <span id="execution-error-GETapi-loans" hidden>
+                    <blockquote>Request failed with error:</blockquote>
+                    <pre><code id="execution-error-message-GETapi-loans">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-GETapi-loans" data-method="GET"
-      data-path="api/loans"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-loans', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-loans"
-                    onclick="tryItOut('GETapi-loans');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-loans"
-                    onclick="cancelTryOut('GETapi-loans');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-loans"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/loans</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-loans"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-loans"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="page"                data-endpoint="GETapi-loans"
-               value="1"
-               data-component="query">
-    <br>
-<p>The page number for pagination. Example: <code>1</code></p>
-            </div>
-                                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-loans"
-               value="10"
-               data-component="query">
-    <br>
-<p>The number of items per page (default is 15). Example: <code>10</code></p>
-            </div>
+                </span>
+                <form
+                    id="form-GETapi-loans"
+                    data-method="GET"
+                    data-path="api/loans"
+                    data-authed="0"
+                    data-hasfiles="0"
+                    data-isarraybody="0"
+                    autocomplete="off"
+                    onsubmit="event.preventDefault(); executeTryOut('GETapi-loans', this);"
+                >
+                    <h3>
+                        Request&nbsp;&nbsp;&nbsp;
+                        <button
+                            type="button"
+                            style="
+                                background-color: #8fbcd4;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-tryout-GETapi-loans"
+                            onclick="tryItOut('GETapi-loans');"
+                        >
+                            Try it out ⚡
+                        </button>
+                        <button
+                            type="button"
+                            style="
+                                background-color: #c97a7e;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-canceltryout-GETapi-loans"
+                            onclick="cancelTryOut('GETapi-loans');"
+                            hidden
+                        >
+                            Cancel 🛑</button
+                        >&nbsp;&nbsp;
+                        <button
+                            type="submit"
+                            style="
+                                background-color: #6ac174;
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                border-width: thin;
+                            "
+                            id="btn-executetryout-GETapi-loans"
+                            data-initial-text="Send Request 💥"
+                            data-loading-text="⏱ Sending..."
+                            hidden
+                        >
+                            Send Request 💥
+                        </button>
+                    </h3>
+                    <p>
+                        <small class="badge badge-green">GET</small>
+                        <b><code>api/loans</code></b>
+                    </p>
+                    <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Content-Type</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Content-Type"
+                            data-endpoint="GETapi-loans"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>Accept</code></b
+                        >&nbsp;&nbsp; &nbsp; &nbsp;
+                        <input
+                            type="text"
+                            style="display: none"
+                            name="Accept"
+                            data-endpoint="GETapi-loans"
+                            value="application/json"
+                            data-component="header"
+                        />
+                        <br />
+                        <p>Example: <code>application/json</code></p>
+                    </div>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>page</code></b
+                        >&nbsp;&nbsp; <small>integer</small>&nbsp;
+                        <i>optional</i> &nbsp;
+                        <input
+                            type="number"
+                            style="display: none"
+                            step="any"
+                            name="page"
+                            data-endpoint="GETapi-loans"
+                            value="1"
+                            data-component="query"
+                        />
+                        <br />
+                        <p>
+                            The page number for pagination. Example:
+                            <code>1</code>
+                        </p>
+                    </div>
+                    <div style="padding-left: 28px; clear: unset">
+                        <b style="line-height: 2"><code>per_page</code></b
+                        >&nbsp;&nbsp; <small>integer</small>&nbsp;
+                        <i>optional</i> &nbsp;
+                        <input
+                            type="number"
+                            style="display: none"
+                            step="any"
+                            name="per_page"
+                            data-endpoint="GETapi-loans"
+                            value="10"
+                            data-component="query"
+                        />
+                        <br />
+                        <p>
+                            The number of items per page (default is 15).
+                            Example: <code>10</code>
+                        </p>
+                    </div>
                 </form>
-
-            
-
-        
-    </div>
-    <div class="dark-box">
-                    <div class="lang-selector">
-                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
-                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
-                            </div>
             </div>
-</div>
-</body>
+        </div>
+    </body>
 </html>
