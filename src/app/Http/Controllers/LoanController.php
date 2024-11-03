@@ -101,9 +101,8 @@ class LoanController extends Controller
      * }
      */
 
-     public function update(UpdateLoanRequest $request, $id): \Illuminate\Http\JsonResponse
+    public function update(UpdateLoanRequest $request, $id): \Illuminate\Http\JsonResponse
     {
-        \Log::info('Update method called');
         $loan = Loan::find($id);
 
         if (!$loan) {
@@ -132,7 +131,7 @@ class LoanController extends Controller
      * @response 404 {
      *   "message": "Loan not found"
      * }
- */
+     */
     public function destroy($id): \Illuminate\Http\JsonResponse
     {
         $loan = Loan::find($id);
@@ -146,7 +145,7 @@ class LoanController extends Controller
         return response()->json(['message' => 'Loan deleted successfully'], 200);
     }
 
-      /**
+    /**
      * Retrieve a list of all loans.
      *
      * @group Loan Management
@@ -202,6 +201,5 @@ class LoanController extends Controller
 
         $loans = Loan::paginate($perPage, ['*'], 'page', $page);
         return LoanResource::collection($loans)->response();
-
     }
 }
