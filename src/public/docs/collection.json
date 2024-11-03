@@ -1,0 +1,126 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost:8080"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "90d71499-f55b-4ca9-b05d-e54e34edcc82",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/test",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/test",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/test"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"message\":\"API is working\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Loan Management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Create a new loan.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/loans",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/loans"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"amount\":\"5000\",\"interest_rate\":\"5.5\",\"duration_months\":12}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n  \"message\": \"Loan created successfully\",\n  \"loan\": {\n    \"id\": 1,\n    \"amount\": 5000,\n    \"interest_rate\": 5.5,\n    \"duration_months\": 12,\n    \"created_at\": \"2023-06-01T12:00:00Z\",\n    \"updated_at\": \"2023-06-01T12:00:00Z\"\n  }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"The given data was invalid.\",\n  \"errors\": {\n    \"amount\": [\n      \"The loan amount is required.\"\n    ],\n    \"interest_rate\": [\n      \"The interest rate is required.\"\n    ],\n    \"duration_months\": [\n      \"The loan duration is required.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
