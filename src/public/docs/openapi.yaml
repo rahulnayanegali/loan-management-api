@@ -145,6 +145,139 @@ paths:
                 - interest_rate
                 - duration_months
       security: []
+  '/api/loans/{id}':
+    put:
+      summary: 'Update an existing loan.'
+      operationId: updateAnExistingLoan
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Loan updated successfully'
+                  loan:
+                    id: 1
+                    amount: 6000
+                    interest_rate: 6.5
+                    duration_months: 24
+                    created_at: '2023-06-01T12:00:00Z'
+                    updated_at: '2023-06-02T12:00:00Z'
+                properties:
+                  message:
+                    type: string
+                    example: 'Loan updated successfully'
+                  loan:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      amount:
+                        type: integer
+                        example: 6000
+                      interest_rate:
+                        type: number
+                        example: 6.5
+                      duration_months:
+                        type: integer
+                        example: 24
+                      created_at:
+                        type: string
+                        example: '2023-06-01T12:00:00Z'
+                      updated_at:
+                        type: string
+                        example: '2023-06-02T12:00:00Z'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Loan not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Loan not found'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    amount:
+                      - 'The loan amount must be at least 0.'
+                    interest_rate:
+                      - 'The interest rate must be between 0 and 100.'
+                    duration_months:
+                      - 'The loan duration must be between 1 and 360 months.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      amount:
+                        type: array
+                        example:
+                          - 'The loan amount must be at least 0.'
+                        items:
+                          type: string
+                      interest_rate:
+                        type: array
+                        example:
+                          - 'The interest rate must be between 0 and 100.'
+                        items:
+                          type: string
+                      duration_months:
+                        type: array
+                        example:
+                          - 'The loan duration must be between 1 and 360 months.'
+                        items:
+                          type: string
+      tags:
+        - 'Loan Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: numeric
+                  description: 'The loan amount.'
+                  example: '6000'
+                  nullable: false
+                interest_rate:
+                  type: numeric
+                  description: 'The interest rate (percentage).'
+                  example: '6.5'
+                  nullable: false
+                duration_months:
+                  type: integer
+                  description: 'The loan duration in months.'
+                  example: 24
+                  nullable: false
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the loan.'
+        example: 1
+        required: true
+        schema:
+          type: integer
 tags:
   -
     name: Endpoints

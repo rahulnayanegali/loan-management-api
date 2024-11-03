@@ -9,6 +9,7 @@ Route::middleware('api')->group(function () {
     Route::get('/test', function () {
         return response()->json(['message' => 'API is working']);
     });
+    Route::put('/loans/{id}', [LoanController::class, 'update']);
 });
 
 

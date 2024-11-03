@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "90d71499-f55b-4ca9-b05d-e54e34edcc82",
+        "_postman_id": "26d0a50e-d17b-4cc0-b3e0-82d15f6aab3a",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -113,6 +113,64 @@
                             "header": [],
                             "code": 422,
                             "body": "{\n  \"message\": \"The given data was invalid.\",\n  \"errors\": {\n    \"amount\": [\n      \"The loan amount is required.\"\n    ],\n    \"interest_rate\": [\n      \"The interest rate is required.\"\n    ],\n    \"duration_months\": [\n      \"The loan duration is required.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update an existing loan.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/loans\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/loans\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the loan."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"amount\":\"6000\",\"interest_rate\":\"6.5\",\"duration_months\":24}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"message\": \"Loan updated successfully\",\n  \"loan\": {\n    \"id\": 1,\n    \"amount\": 6000,\n    \"interest_rate\": 6.5,\n    \"duration_months\": 24,\n    \"created_at\": \"2023-06-01T12:00:00Z\",\n    \"updated_at\": \"2023-06-02T12:00:00Z\"\n  }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n  \"message\": \"Loan not found\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n  \"message\": \"The given data was invalid.\",\n  \"errors\": {\n    \"amount\": [\n      \"The loan amount must be at least 0.\"\n    ],\n    \"interest_rate\": [\n      \"The interest rate must be between 0 and 100.\"\n    ],\n    \"duration_months\": [\n      \"The loan duration must be between 1 and 360 months.\"\n    ]\n  }\n}",
                             "name": ""
                         }
                     ]
