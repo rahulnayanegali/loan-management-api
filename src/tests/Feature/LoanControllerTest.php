@@ -257,6 +257,26 @@ public function test_update_loan_with_partial_data()
     ]);
 }
 
+public function test_delete_existing_loan()
+{
+    $loan = Loan::factory()->create();
+
+    $response = $this->deleteJson("/api/loans/{$loan->id}");
+
+    $response->assertStatus(200)
+             ->assertJson(['message' => 'Loan deleted successfully']);
+
+    $this->assertDatabaseMissing('loans', ['id' => $loan->id]);
+}
+
+public function test_delete_nonexistent_loan()
+{
+    $response = $this->deleteJson("/api/loans/999");
+
+    $response->assertStatus(404)
+             ->assertJson(['message' => 'Loan not found']);
+}
+
     protected function setUp(): void
 {
     parent::setUp();

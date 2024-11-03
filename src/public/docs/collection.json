@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "26d0a50e-d17b-4cc0-b3e0-82d15f6aab3a",
+        "_postman_id": "20f57bf7-ed02-46f1-bf99-e439bac91d34",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -171,6 +171,55 @@
                             "header": [],
                             "code": 422,
                             "body": "{\n  \"message\": \"The given data was invalid.\",\n  \"errors\": {\n    \"amount\": [\n      \"The loan amount must be at least 0.\"\n    ],\n    \"interest_rate\": [\n      \"The interest rate must be between 0 and 100.\"\n    ],\n    \"duration_months\": [\n      \"The loan duration must be between 1 and 360 months.\"\n    ]\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete an existing loan.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/loans\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/loans\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the loan to delete."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"message\": \"Loan deleted successfully\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n  \"message\": \"Loan not found\"\n}",
                             "name": ""
                         }
                     ]

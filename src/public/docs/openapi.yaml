@@ -269,6 +269,39 @@ paths:
                   example: 24
                   nullable: false
       security: []
+    delete:
+      summary: 'Delete an existing loan.'
+      operationId: deleteAnExistingLoan
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Loan deleted successfully'
+                properties:
+                  message:
+                    type: string
+                    example: 'Loan deleted successfully'
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Loan not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Loan not found'
+      tags:
+        - 'Loan Management'
+      security: []
     parameters:
       -
         in: path

@@ -115,4 +115,32 @@ class LoanController extends Controller
             'loan' => $loan
         ]);
     }
+
+    /**
+     * Delete an existing loan.
+     *
+     * @group Loan Management
+     *
+     * @urlParam id integer required The ID of the loan to delete. Example: 1
+     *
+     * @response 200 {
+     *   "message": "Loan deleted successfully"
+     * }
+     *
+     * @response 404 {
+     *   "message": "Loan not found"
+     * }
+ */
+    public function destroy($id): \Illuminate\Http\JsonResponse
+    {
+        $loan = Loan::find($id);
+
+        if (!$loan) {
+            return response()->json(['message' => 'Loan not found'], 404);
+        }
+
+        $loan->delete();
+
+        return response()->json(['message' => 'Loan deleted successfully'], 200);
+    }
 }
