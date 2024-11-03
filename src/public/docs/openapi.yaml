@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8080'
+paths:
+  /api/test:
+    get:
+      summary: ''
+      operationId: getApiTest
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'API is working'
+                properties:
+                  message:
+                    type: string
+                    example: 'API is working'
+      tags:
+        - Endpoints
+      security: []
+  /api/loans:
+    post:
+      summary: 'Create a new loan.'
+      operationId: createANewLoan
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Loan created successfully'
+                  loan:
+                    id: 1
+                    amount: 5000
+                    interest_rate: 5.5
+                    duration_months: 12
+                    created_at: '2023-06-01T12:00:00Z'
+                    updated_at: '2023-06-01T12:00:00Z'
+                properties:
+                  message:
+                    type: string
+                    example: 'Loan created successfully'
+                  loan:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      amount:
+                        type: integer
+                        example: 5000
+                      interest_rate:
+                        type: number
+                        example: 5.5
+                      duration_months:
+                        type: integer
+                        example: 12
+                      created_at:
+                        type: string
+                        example: '2023-06-01T12:00:00Z'
+                      updated_at:
+                        type: string
+                        example: '2023-06-01T12:00:00Z'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    amount:
+                      - 'The loan amount is required.'
+                    interest_rate:
+                      - 'The interest rate is required.'
+                    duration_months:
+                      - 'The loan duration is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      amount:
+                        type: array
+                        example:
+                          - 'The loan amount is required.'
+                        items:
+                          type: string
+                      interest_rate:
+                        type: array
+                        example:
+                          - 'The interest rate is required.'
+                        items:
+                          type: string
+                      duration_months:
+                        type: array
+                        example:
+                          - 'The loan duration is required.'
+                        items:
+                          type: string
+      tags:
+        - 'Loan Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: numeric
+                  description: 'The loan amount.'
+                  example: '5000'
+                  nullable: false
+                interest_rate:
+                  type: numeric
+                  description: 'The interest rate (percentage).'
+                  example: '5.5'
+                  nullable: false
+                duration_months:
+                  type: integer
+                  description: 'The loan duration in months.'
+                  example: 12
+                  nullable: false
+              required:
+                - amount
+                - interest_rate
+                - duration_months
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: 'Loan Management'
+    description: ''
