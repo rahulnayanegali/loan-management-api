@@ -9,10 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
+            $table->decimal('amount', 10, 2);
+            $table->decimal('interest_rate', 5, 2);
+            $table->integer('duration_months');
             $table->timestamps();
         });
     }
