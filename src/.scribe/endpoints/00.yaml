@@ -280,3 +280,96 @@ endpoints:
     method: null
     route: null
     custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/loans
+    metadata:
+      groupName: 'Loan Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Retrieve a list of all loans.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'The page number for pagination.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: 'The number of items per page (default is 15).'
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      per_page: 10
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 1,
+                "amount": 5000,
+                "interest_rate": 5.5,
+                "duration_months": 12,
+                "created_at": "2023-06-01T12:00:00Z",
+                "updated_at": "2023-06-01T12:00:00Z"
+              },
+              {
+                "id": 2,
+                "amount": 10000,
+                "interest_rate": 6.0,
+                "duration_months": 24,
+                "created_at": "2023-06-02T12:00:00Z",
+                "updated_at": "2023-06-02T12:00:00Z"
+              }
+            ],
+            "links": {
+              "first": "http://example.com/api/loans?page=1",
+              "last": "http://example.com/api/loans?page=1",
+              "prev": null,
+              "next": null
+            },
+            "meta": {
+              "current_page": 1,
+              "from": 1,
+              "last_page": 1,
+              "path": "http://example.com/api/loans",
+              "per_page": 15,
+              "to": 2,
+              "total": 2
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

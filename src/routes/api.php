@@ -11,6 +11,7 @@ Route::middleware('api')->group(function () {
     });
     Route::put('/loans/{id}', [LoanController::class, 'update']);
     Route::delete('/loans/{id}', [LoanController::class, 'destroy']);
+    Route::get('/loans', [LoanController::class, 'index']);
 });
 
 

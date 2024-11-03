@@ -145,6 +145,150 @@ paths:
                 - interest_rate
                 - duration_months
       security: []
+    get:
+      summary: 'Retrieve a list of all loans.'
+      operationId: retrieveAListOfAllLoans
+      description: ''
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'The page number for pagination.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'The page number for pagination.'
+            example: 1
+            nullable: false
+        -
+          in: query
+          name: per_page
+          description: 'The number of items per page (default is 15).'
+          example: 10
+          required: false
+          schema:
+            type: integer
+            description: 'The number of items per page (default is 15).'
+            example: 10
+            nullable: false
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      amount: 5000
+                      interest_rate: 5.5
+                      duration_months: 12
+                      created_at: '2023-06-01T12:00:00Z'
+                      updated_at: '2023-06-01T12:00:00Z'
+                    -
+                      id: 2
+                      amount: 10000
+                      interest_rate: 6.0
+                      duration_months: 24
+                      created_at: '2023-06-02T12:00:00Z'
+                      updated_at: '2023-06-02T12:00:00Z'
+                  links:
+                    first: 'http://example.com/api/loans?page=1'
+                    last: 'http://example.com/api/loans?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: 'http://example.com/api/loans'
+                    per_page: 15
+                    to: 2
+                    total: 2
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        amount: 5000
+                        interest_rate: 5.5
+                        duration_months: 12
+                        created_at: '2023-06-01T12:00:00Z'
+                        updated_at: '2023-06-01T12:00:00Z'
+                      -
+                        id: 2
+                        amount: 10000
+                        interest_rate: 6
+                        duration_months: 24
+                        created_at: '2023-06-02T12:00:00Z'
+                        updated_at: '2023-06-02T12:00:00Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        amount:
+                          type: integer
+                          example: 5000
+                        interest_rate:
+                          type: number
+                          example: 5.5
+                        duration_months:
+                          type: integer
+                          example: 12
+                        created_at:
+                          type: string
+                          example: '2023-06-01T12:00:00Z'
+                        updated_at:
+                          type: string
+                          example: '2023-06-01T12:00:00Z'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://example.com/api/loans?page=1'
+                      last:
+                        type: string
+                        example: 'http://example.com/api/loans?page=1'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      path:
+                        type: string
+                        example: 'http://example.com/api/loans'
+                      per_page:
+                        type: integer
+                        example: 15
+                      to:
+                        type: integer
+                        example: 2
+                      total:
+                        type: integer
+                        example: 2
+      tags:
+        - 'Loan Management'
+      security: []
   '/api/loans/{id}':
     put:
       summary: 'Update an existing loan.'

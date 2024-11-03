@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreLoanRequest;
 use App\Http\Requests\UpdateLoanRequest;
+use App\Http\Resources\LoanResource;
+
 use App\Models\Loan;
 
 class LoanController extends Controller
@@ -142,5 +144,61 @@ class LoanController extends Controller
         $loan->delete();
 
         return response()->json(['message' => 'Loan deleted successfully'], 200);
+    }
+
+      /**
+     * Retrieve a list of all loans.
+     *
+     * @group Loan Management
+     *
+     * @queryParam page integer The page number for pagination. Example: 1
+     * @queryParam per_page integer The number of items per page (default is 15). Example: 10
+     *
+     * @response {
+     *   "data": [
+     *     {
+     *       "id": 1,
+     *       "amount": 5000,
+     *       "interest_rate": 5.5,
+     *       "duration_months": 12,
+     *       "created_at": "2023-06-01T12:00:00Z",
+     *       "updated_at": "2023-06-01T12:00:00Z"
+     *     },
+     *     {
+     *       "id": 2,
+     *       "amount": 10000,
+     *       "interest_rate": 6.0,
+     *       "duration_months": 24,
+     *       "created_at": "2023-06-02T12:00:00Z",
+     *       "updated_at": "2023-06-02T12:00:00Z"
+     *     }
+     *   ],
+     *   "links": {
+     *     "first": "http://example.com/api/loans?page=1",
+     *     "last": "http://example.com/api/loans?page=1",
+     *     "prev": null,
+     *     "next": null
+     *   },
+     *   "meta": {
+     *     "current_page": 1,
+     *     "from": 1,
+     *     "last_page": 1,
+     *     "path": "http://example.com/api/loans",
+     *     "per_page": 15,
+     *     "to": 2,
+     *     "total": 2
+     *   }
+     * }
+     */
+    public function index(): \Illuminate\Http\JsonResponse
+    {
+        $validated = request()->validate([
+            'per_page' => 'sometimes|integer|min:1|max:100',
+        ]);
+
+        $perPage = $validated['per_page'] ?? 15; // Default to 15 if not specified or invalid
+        $loans = Loan::paginate($perPage);
+        return LoanResource::collection($loans)->response();
+
     }
 }

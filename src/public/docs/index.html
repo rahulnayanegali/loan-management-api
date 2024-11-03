@@ -90,6 +90,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="loan-management-DELETEapi-loans--id-">
                                 <a href="#loan-management-DELETEapi-loans--id-">Delete an existing loan.</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="loan-management-GETapi-loans">
+                                <a href="#loan-management-GETapi-loans">Retrieve a list of all loans.</a>
+                            </li>
                                                                         </ul>
                             </ul>
             </div>
@@ -793,6 +796,185 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The ID of the loan to delete. Example: <code>1</code></p>
             </div>
                     </form>
+
+                    <h2 id="loan-management-GETapi-loans">Retrieve a list of all loans.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-loans">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8080/api/loans?page=1&amp;per_page=10" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8080/api/loans"
+);
+
+const params = {
+    "page": "1",
+    "per_page": "10",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-loans">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;amount&quot;: 5000,
+            &quot;interest_rate&quot;: 5.5,
+            &quot;duration_months&quot;: 12,
+            &quot;created_at&quot;: &quot;2023-06-01T12:00:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-06-01T12:00:00Z&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;amount&quot;: 10000,
+            &quot;interest_rate&quot;: 6,
+            &quot;duration_months&quot;: 24,
+            &quot;created_at&quot;: &quot;2023-06-02T12:00:00Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-06-02T12:00:00Z&quot;
+        }
+    ],
+    &quot;links&quot;: {
+        &quot;first&quot;: &quot;http://example.com/api/loans?page=1&quot;,
+        &quot;last&quot;: &quot;http://example.com/api/loans?page=1&quot;,
+        &quot;prev&quot;: null,
+        &quot;next&quot;: null
+    },
+    &quot;meta&quot;: {
+        &quot;current_page&quot;: 1,
+        &quot;from&quot;: 1,
+        &quot;last_page&quot;: 1,
+        &quot;path&quot;: &quot;http://example.com/api/loans&quot;,
+        &quot;per_page&quot;: 15,
+        &quot;to&quot;: 2,
+        &quot;total&quot;: 2
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-loans" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-loans"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-loans"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-loans" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-loans">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-loans" data-method="GET"
+      data-path="api/loans"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-loans', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-loans"
+                    onclick="tryItOut('GETapi-loans');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-loans"
+                    onclick="cancelTryOut('GETapi-loans');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-loans"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/loans</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-loans"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-loans"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="page"                data-endpoint="GETapi-loans"
+               value="1"
+               data-component="query">
+    <br>
+<p>The page number for pagination. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-loans"
+               value="10"
+               data-component="query">
+    <br>
+<p>The number of items per page (default is 15). Example: <code>10</code></p>
+            </div>
+                </form>
 
             
 

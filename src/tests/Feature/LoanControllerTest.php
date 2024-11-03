@@ -283,4 +283,17 @@ public function test_delete_nonexistent_loan()
     $this->app['env'] = 'testing';
     $this->withoutExceptionHandling();
 }
+
+public function test_retrieve_loans_first_page_with_custom_pagination()
+{
+    Loan::factory()->count(20)->create();
+
+    $response = $this->getJson("/api/loans?page=1&per_page=10");
+
+    $response->assertStatus(200);
+    $this->assertEquals(10, count($response->json('data')));
+    $this->assertEquals(1, $response->json('meta.current_page'));
+    $this->assertEquals(10, $response->json('meta.per_page'));
+    $this->assertEquals(20, $response->json('meta.total'));
+}
 }
