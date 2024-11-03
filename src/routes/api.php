@@ -10,6 +10,7 @@ Route::middleware('api')->group(function () {
         return response()->json(['message' => 'API is working']);
     });
     Route::put('/loans/{id}', [LoanController::class, 'update']);
+    Route::delete('/loans/{id}', [LoanController::class, 'destroy']);
 });
 
 
