@@ -8,6 +8,9 @@ docker-compose up -d --build
 echo "Waiting for database to be ready..."
 sleep 10
 
+# Install Composer dependencies
+docker-compose exec app composer install
+
 # Run migrations
 docker-compose exec app php artisan migrate
 
