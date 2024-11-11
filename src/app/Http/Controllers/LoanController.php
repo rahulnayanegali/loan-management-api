@@ -106,7 +106,7 @@ class LoanController extends Controller
         $loan = Loan::find($id);
 
         if (!$loan) {
-            return response()->json(['message' => 'Loan not found'], 404);
+            return response()->json(['message' => 'Loan not created'], 404);
         }
 
         $loan->update($request->validated());
