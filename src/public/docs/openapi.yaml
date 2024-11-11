@@ -29,6 +29,39 @@ paths:
       tags:
         - Endpoints
       security: []
+  '/api/loans/{loan_id}/payments':
+    post:
+      summary: ''
+      operationId: postApiLoansLoan_idPayments
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  description: 'Must be at least 0.01.'
+                  example: 38
+                  nullable: false
+              required:
+                - amount
+      security: []
+    parameters:
+      -
+        in: path
+        name: loan_id
+        description: 'The ID of the loan.'
+        example: 29
+        required: true
+        schema:
+          type: integer
   /api/loans:
     post:
       summary: 'Create a new loan.'
