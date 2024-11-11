@@ -41,6 +41,7 @@ This script will:
 - `GET /api/loans/{id}`: Retrieve a specific loan
 - `PUT /api/loans/{id}`: Update a specific loan
 - `DELETE /api/loans/{id}`: Delete a specific loan
+- `POST /api/loans/{id}/payments`: Add/Update payment to a specific loan
 For detailed information on request/response formats, please refer to the API documentation.
 
 ## Testing
