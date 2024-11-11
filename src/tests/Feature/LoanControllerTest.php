@@ -184,7 +184,7 @@ class LoanControllerTest extends TestCase
         $response = $this->putJson("/api/loans/999", ['amount' => 6000]);
 
         $response->assertStatus(404)
-            ->assertJson(['message' => 'Loan not found']);
+            ->assertJson(['message' => 'Loan not created']);
     }
 
     /**
