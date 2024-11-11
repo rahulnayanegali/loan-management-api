@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "c2e006cd-fb3a-4b7e-8c99-dd4501faa749",
+        "_postman_id": "3260f170-807b-4bc1-a3c6-633d1530e122",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -66,6 +66,45 @@
                             "name": ""
                         }
                     ]
+                },
+                {
+                    "name": "POST api\/loans\/{loan_id}\/payments",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/loans\/:loan_id\/payments",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/loans\/:loan_id\/payments",
+                            "variable": [
+                                {
+                                    "id": "loan_id",
+                                    "key": "loan_id",
+                                    "value": "29",
+                                    "description": "The ID of the loan."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"amount\":38}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
                 }
             ]
         },
